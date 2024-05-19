@@ -8,7 +8,7 @@
 body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     line-height: 1.6;
-    background-color: #ffffff;
+    background-color: #000000;
 }
 
 header {
@@ -45,7 +45,7 @@ header nav ul li a {
 
 .hero {
     background: url('back1.png') no-repeat center center/cover;
-    color: #fff;
+    color: #ffffff;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -73,19 +73,18 @@ header nav ul li a {
     font-size: 1.2em;
 }
 
-
 .section {
     padding: 50px 50px;
-    margin: 20px 50px;
+    margin: 20px 10%;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.9);
     transition: background-color 0.3s ease;
-    position: relative; /* Ensure it has a positioning context */
+    position: relative;
 }
 
 .section:hover {
-    background-color: rgb(176, 214, 253); /* Initial hover color */
-    animation: colorChange 3s infinite; /* Apply the animation */
+    background-color: rgb(176, 214, 253);
+    animation: colorChange 5s infinite;
 }
 
 @keyframes colorChange {
@@ -107,11 +106,11 @@ header nav ul li a {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .about-section .box {
-    background-image: url('about%20us.png'); /* Use URL-encoded format for spaces */
+    background-image: url('about%20us.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -125,16 +124,82 @@ header nav ul li a {
 }
 
 .services-section .box {
-    background-color: #fce4ec;
+    background-image: url('our\ services.jpg');
 }
 
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.service {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.service:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service h3 {
+    margin-bottom: 10px;
+}
+
+.service p {
+    margin-bottom: 0;
+}
+
+
+.service::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 102, 0, 0.2);
+    z-index: -1;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.service:hover::before {
+    transform: scale(1);
+}
+
+.service-icon {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #ffbabaea;
+}
+/* Portfolio Section Styling */
 .portfolio-section .box {
-    background-color: #e8f5e9;
+    background-image: url('projects.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 80px;
+    color: #000000;
 }
 
 h2 {
     font-size: 2em;
     margin-bottom: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+p {
+    text-align: center;
+    color: #ffffff;
 }
 
 h3 {
@@ -147,13 +212,64 @@ h3 {
     margin: 0 auto;
 }
 
-.service, .portfolio-item {
+.portfolio-item {
+    display: flex;
     margin-bottom: 30px;
 }
 
-.service h3, .portfolio-item h3 {
-    margin-bottom: 10px;
+.portfolio-content,
+.portfolio-image {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
 }
+
+.portfolio-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    margin-right: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.portfolio-content:hover {
+    transform: translateY(-10px);
+    z-index: 2;
+}
+
+.portfolio-image {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.portfolio-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.portfolio-image:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .portfolio-item {
+        flex-direction: column;
+    }
+
+    .portfolio-content {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .portfolio-image img {
+        border-radius: 8px;
+    }
+}
+
 
 #contact {
     background-image: url('back2.png');
@@ -162,6 +278,40 @@ h3 {
     background-position: center;
     padding: 80px;
     color: #000000;
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#contact input, #contact textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 16px;
+}
+
+#contact button {
+    background: #ff6600;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#contact button:hover {
+    background: #e65c00;
 }
 
 footer {
@@ -214,4 +364,3 @@ footer {
         padding: 20px;
     }
 }
-
