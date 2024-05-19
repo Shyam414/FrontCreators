@@ -8,7 +8,7 @@
 body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     line-height: 1.6;
-    background-color: #000000;
+    background-color: #ffffff;
 }
 
 header {
@@ -151,6 +151,14 @@ h3 {
 
 .service h3, .portfolio-item h3 {
     margin-bottom: 10px;
+}
+#contact{
+    background-image: url('back2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 80px;
+    color: #000000;
 }
 
 footer {
