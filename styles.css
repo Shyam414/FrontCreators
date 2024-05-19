@@ -102,6 +102,7 @@ header nav ul li a {
         background-color: rgb(201, 225, 250);
     }
 }
+
 .box {
     background-color: #f9f9f9;
     padding: 20px;
@@ -110,18 +111,19 @@ header nav ul li a {
 }
 
 .about-section .box {
-    background-image: url('about\ us.png'); /* Use URL-encoded format for spaces */
+    background-image: url('about%20us.png'); /* Use URL-encoded format for spaces */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     padding: 80px;
     color: #ffffff;
-    
 }
-.other-content{
+
+.other-content {
     padding-right: 50%;
     font-size: 18px;
 }
+
 .services-section .box {
     background-color: #fce4ec;
 }
@@ -152,7 +154,8 @@ h3 {
 .service h3, .portfolio-item h3 {
     margin-bottom: 10px;
 }
-#contact{
+
+#contact {
     background-image: url('back2.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -170,8 +173,45 @@ footer {
     border-radius: 8px;
 }
 
-/* Simple script for smooth scrolling */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('h
+/* Responsive Design */
+@media (max-width: 768px) {
+    header, .hero, .section, footer {
+        margin: 10px 20px;
+        padding: 20px;
+    }
+
+    .hero h2 {
+        font-size: 2em;
+    }
+
+    .hero p, .hero .cta-button, .section, .box, .service, .portfolio-item {
+        font-size: 1em;
+    }
+
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+
+    .about-section .box, .services-section .box, .portfolio-section .box {
+        padding: 20px;
+    }
+
+    .other-content {
+        padding-right: 0;
+    }
+
+    #contact {
+        padding: 20px;
+    }
+}
+
