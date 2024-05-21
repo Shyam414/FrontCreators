@@ -10,19 +10,39 @@ body {
     line-height: 1.6;
     background-color: #000000;
 }
+/* navbar */
 
 header {
-    background: #4b4949;
-    color: #fff;
+    background: #ffffff;
+    color: #000000;
     padding: 10px 0;
     margin: 20px 50px;
     border-radius: 8px;
+
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+header {
+    background-color: rgb(176, 214, 253);
+    animation: colorChange 5s infinite;
+}
+@keyframes colorChange {
+    0% {
+        background-color: rgb(166, 203, 243);
+    }
+    33% {
+        background-color: rgb(245, 232, 199);
+    }
+    66% {
+        background-color: rgb(176, 238, 192);
+    }
+    100% {
+        background-color: rgb(179, 206, 235);
+    }
 }
 
 header h1 {
@@ -32,6 +52,8 @@ header h1 {
 header nav ul {
     list-style: none;
     display: flex;
+    font-size: 20px;
+    font-style: italic;
 }
 
 header nav ul li {
@@ -39,11 +61,20 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: #fff;
+    color: #000000;
     text-decoration: none;
+    padding: 10px; /* Add padding for better hover effect */
+    transition: font-size 0.3s ease, background-color 0.3s ease; /* Transition for smooth changes */
 }
 
+header nav ul li a:hover {
+    font-size: 1.2em; /* Increase font size on hover */
+    background-color: #ff6600; /* Change background color on hover */
+    border-radius: 4px; /* Optional: Add border-radius for rounded corners */
+}
+/* hero */
 .hero {
+    position: relative;
     background: url('back1.png') no-repeat center center/cover;
     color: #ffffff;
     height: 100vh;
@@ -54,24 +85,43 @@ header nav ul li a {
     margin: 20px 50px;
     border-radius: 8px;
 }
-
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Change the opacity as needed */
+    border-radius: 8px;
+    z-index: 1;
+}
+.container {
+    position: relative;
+    z-index: 2;
+}
 .hero h2 {
     font-size: 3em;
     margin-bottom: 10px;
 }
-
 .hero p {
     font-size: 1.2em;
     margin-bottom: 20px;
 }
-
 .hero .cta-button {
     background: #ff6600;
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
     font-size: 1.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Smooth transition for the hover effect */
 }
+.hero .cta-button:hover {
+    background: #cc5200; /* Change to desired hover color */
+}
+
+/* sections */
 
 .section {
     padding: 50px 50px;
@@ -89,21 +139,22 @@ header nav ul li a {
 
 @keyframes colorChange {
     0% {
-        background-color: rgb(205, 224, 244);
+        background-color: rgb(166, 203, 243);
     }
     33% {
-        background-color: rgb(243, 238, 225);
+        background-color: rgb(245, 232, 199);
     }
     66% {
-        background-color: rgb(199, 250, 213);
+        background-color: rgb(176, 238, 192);
     }
     100% {
-        background-color: rgb(201, 225, 250);
+        background-color: rgb(179, 206, 235);
     }
 }
+/* about */
 
 .box {
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -120,14 +171,40 @@ header nav ul li a {
 
 .other-content {
     padding-right: 50%;
-    font-size: 18px;
+    font-size: 25px;
 }
 
+/* services */
 .services-section .box {
-    background-image: url('our\ services.jpg');
+    position: relative;
+    background-image: url('our services.jpg');
+    color: #ffffff;
+    padding: 40px 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.services-section .box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+    z-index: 1;
+}
+
+.container.box h2 {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Optional: Text shadow for better readability */
 }
 
 .services-container {
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
@@ -140,23 +217,27 @@ header nav ul li a {
     position: relative;
     overflow: hidden;
     transform: scale(1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     text-align: center;
+    background: rgba(255, 255, 255, 0.5); 
+    z-index: 2;
 }
 
 .service:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.5); /* Slightly darker on hover */
 }
 
 .service h3 {
     margin-bottom: 10px;
+    color: #000; /* Black text color for better readability */
 }
 
 .service p {
     margin-bottom: 0;
+    color: #000; /* Black text color for better readability */
 }
-
 
 .service::before {
     content: "";
@@ -178,8 +259,10 @@ header nav ul li a {
 .service-icon {
     font-size: 2em;
     margin-bottom: 10px;
-    color: #ffbabaea;
+    color: #ff6600; /* Icon color */
 }
+
+
 /* Portfolio Section Styling */
 .portfolio-section .box {
     background-image: url('projects.jpg');
@@ -187,58 +270,101 @@ header nav ul li a {
     background-repeat: no-repeat;
     background-position: center;
     padding: 80px;
-    color: #000000;
+    color: #ffffff; /* Change text color to white for better contrast */
+    position: relative; /* Add position relative for overlay */
 }
 
-h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #ffffff;
+/* Add background overlay */
+.portfolio-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust opacity as needed */
+    z-index: -1;
 }
 
-p {
-    text-align: center;
-    color: #ffffff;
+.portfolio-section .box h2,
+.portfolio-section .box h3 {
+    color: #ffffff; /* Ensure text color is white */
+    font-size: 30px;
 }
 
-h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+/* Adjust content styles */
+.portfolio-section .box h2,
+.portfolio-section .box p,
+.portfolio-section .box h3 {
+    color: #ffffff; /* Ensure text color is white */
 }
 
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
+.portfolio-section .box p {
+    font-size: 20px;
 }
 
-.portfolio-item {
-    display: flex;
-    margin-bottom: 30px;
-}
-
-.portfolio-content,
-.portfolio-image {
-    flex: 1;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-}
-
+/* Adjust portfolio content background */
 .portfolio-content {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity as needed */
     padding: 20px;
     margin-right: 15px;
     position: relative;
     z-index: 1;
 }
 
-.portfolio-content:hover {
-    transform: translateY(-10px);
-    z-index: 2;
+/* Adjust portfolio image styles */
+.portfolio-image {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.portfolio-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.portfolio-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .portfolio-item {
+        flex-direction: column;
+    }
+
+    .portfolio-content {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .portfolio-image img {
+        border-radius: 8px;
+    }
+}
+/* Portfolio Item */
+.portfolio-item {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.portfolio-content {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity as needed */
+    padding: 20px;
+    margin-right: 15px;
+    position: relative;
+    z-index: 1;
 }
 
 .portfolio-image {
+    flex: 1;
     text-align: center;
     position: relative;
     z-index: 1;
@@ -255,6 +381,7 @@ h3 {
     transform: scale(1.05);
 }
 
+/* Media query for smaller screens */
 @media (max-width: 768px) {
     .portfolio-item {
         flex-direction: column;
@@ -270,19 +397,47 @@ h3 {
     }
 }
 
+/* contact */
 
+/* Contact Section */
 #contact {
     background-image: url('back2.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     padding: 80px;
-    color: #000000;
+    color: #ffffff;
+    position: relative;
+}
+
+#contact .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+#contact .container {
+    position: relative;
+    z-index: 1;
+}
+
+#contact h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffffff;
 }
 
 #contact form {
     display: flex;
     flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 8px;
 }
 
 #contact label {
@@ -297,6 +452,12 @@ h3 {
     border-radius: 4px;
     width: 100%;
     font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact input:focus, #contact textarea:focus {
+    border-color: #ff6600;
+    box-shadow: 0 0 5px rgba(255, 102, 0, 0.5);
 }
 
 #contact button {
@@ -307,12 +468,24 @@ h3 {
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 #contact button:hover {
     background: #e65c00;
+    transform: scale(1.05);
 }
+
+#success-message {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+}
+
+/* footer */
 
 footer {
     background: #333;
